@@ -16,12 +16,12 @@ I included most of the code that I wrote for the postfix assignment, as it was a
 int main()
 {
 	cout << "but will it run?" << endl;
-	string equation = "(3+7)-16";
-	Tree Maple(equation);
+	vector<int> gimme = { 4, 5, 1, 7, 12 };
+	Tree Maple(gimme); // give it a vector
+
+	cin.get();
 
 
-	
-
-	system("pause");
+	//system("pause");
 	return 0;
 };

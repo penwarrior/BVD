@@ -2,65 +2,48 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
 class Tree
 {
 private:
-	int PEMDAS(char mander);
 
 	class Node
 	{
 	private:
+		Node *root;
 		Node *left;
 		Node *right;
-		int num;
-		char op;
-
+		int data;
 	public:
 		Node();
 		~Node();
-		void setOperator(char gimme);
-		void setNumber(int num);
+		void setData(char gimme);
 
 		Node* getLeft();
 		Node* getRight();
-		char getOp();
-		int getNum();
-		bool isNodeOperator();
-
-
+		int getData();
 		void setLeft(Node* give);
 		void setRight(Node* give);
-
 		void print(int depth = 0);
 	};
-
-	Node *root;
 
 
 public:
 	Tree();
 	~Tree();
-	Tree(string equation);
+	Tree(); // this is going to need a vector in it somehow
 
 	Node* getRoot();
 	void setRoot(Node* give);
-	string makePostFix(string eq);
-
 	void fillTree(string postEq);
-
-
 	void print();
+	int depth(int find);
+	int breadth(int find);
 
 
 
 
 };
-
-//Global shit
-
-bool isOperator(char mander);
-
-bool checkEquation(string equation);
