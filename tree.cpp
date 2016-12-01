@@ -94,20 +94,46 @@ void Tree::print()
 
 void Tree::fillTree(vector use)//this will take a vector
 {
-//-if root is null number is root
-//-if root is not null, is number bigger? if yes left, if no right
-do {
+
+for(int i = 0; i < use.size(); ++i)
+{
 	if(root == nullptr)
 	{
-		root.setdata(use);//??????????????????????????
+		root = new Node(use[i]);
+		continue;
 	}
 
-	else if(root != nullptr )
+	Node *temp = root;
+
+	while(true)
 	{
-		
-	}
+		if(use[i] < temp.getData())
+		{
+			if(temp.getLeft() == nullptr)
+			{
+				temp.setLeft(new Node(use[i]));
+				break;
+			}
+			else
+			{
+				temp = temp.getLeft();
+			}
+		}
+		else if(use[i] >= temp.getData())
+		{
+			if(temp.getRight() == nullptr)
+			{
+				temp.setRight(new Node(use[i]));
+				break;
+			}
+			else
+			{
+				temp = temp.getRight();
+			}
+		}
 
-} while(!use.end();
+	}
+}
 
 
 
@@ -118,13 +144,11 @@ do {
 int Tree::depth(int find)
 {
 	 //always go left unless you must go right
-	 do
-	 {
-		 if()
-	 }while(getLeft != nullptr)
+
 }
 
 int Tree::breadth(int find)
 {
-
+// level counter, math to figure out how many nodes you have visited per level, and how many there should be
+//fuck.
 }

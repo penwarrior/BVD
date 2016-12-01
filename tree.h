@@ -13,7 +13,6 @@ private:
 	class Node
 	{
 	private:
-		Node *root;
 		Node *left;
 		Node *right;
 		int data;
@@ -30,7 +29,7 @@ private:
 		void print(int depth = 0);
 	};
 
-
+Node *root;
 public:
 	Tree();
 	~Tree();
