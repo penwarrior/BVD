@@ -30,7 +30,7 @@ private:
 		void setRight(Node* give);
 		void print();
 		bool depth(int find);
-		bool breadth(int find, queue<Node*>& que);
+		bool breadth(int find, queue<Node*>& que); //Made with the help of Stephen Lane-Walsh
 	};
 
 Node *root;
