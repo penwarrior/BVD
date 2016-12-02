@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -29,7 +30,7 @@ private:
 		void setRight(Node* give);
 		void print();
 		bool depth(int find);
-		bool breadth(int find);
+		bool breadth(int find, queue<Node*>& que);
 	};
 
 Node *root;
@@ -46,7 +47,7 @@ public:
 	bool depth(int find);
 	bool breadth(int find);
 
-
-
-
 };
+
+extern int g_DepthCompCount;
+extern int g_BreadthCompCount;

@@ -1,6 +1,9 @@
 #include "tree.h"
 #include <stack>
 
+int g_DepthCompCount = 0;
+int g_BreadthCompCount = 0;
+
 // Node items
 
 Tree::Node*
@@ -71,6 +74,8 @@ void Tree::Node::print()
 
 bool Tree::Node::depth(int find)
 {
+	++g_DepthCompCount;
+
 	if(data == find)
 	{
 		return true;
@@ -98,7 +103,24 @@ bool Tree::Node::depth(int find)
     return false;
 }
 
+bool Tree::Node::breadth(int find, queue<Node*>& que)
+{
+	++g_BreadthCompCount;
 
+	if (getData() == find) {
+		return true;
+	}
+
+	if (getLeft() != nullptr) {
+		que.push(getLeft());
+	}
+
+	if (getRight() != nullptr) {
+		que.push(getRight());
+	}
+
+	return false;
+}
 
 
 // Tree items
@@ -166,14 +188,33 @@ void Tree::fillTree(vector<int> use)
 
 bool Tree::depth(int find)
 {
-	return root->depth(find);
-
+	g_DepthCompCount = 0;
+	bool res = root->depth(find);
+	if (res) {
+		cout << "Depth took " << g_DepthCompCount << " comps\n";
+	}
+	return res;
 }
 
 bool Tree::breadth(int find)
 {
-    // level counter, math to figure out how many nodes you have visited per level, and how many there should be
-    //this will only work if the tree is balanced.
-    //fuck.
-    return false;
+	g_BreadthCompCount = 0;
+
+	queue<Node*> por;
+	por.push(root);
+
+	bool res = false;
+	while (!por.empty()) {
+		Node* next = por.front();
+		por.pop();
+		if (next->breadth(find, por)) {
+			res = true;
+			break;
+		}
+	}
+
+	if (res) {
+		cout << "Breadth took " << g_BreadthCompCount << " comps\n";
+	}
+	return res;
 }
