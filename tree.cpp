@@ -55,6 +55,17 @@ Tree::Node::Node(int takeit)
 
 void Tree::Node::print()
 {
+	cout << data << endl;
+
+	if(getLeft() != nullptr)
+	{
+		getLeft()->print();
+	}
+
+	if(getRight() != nullptr)
+	{
+		getRight()->print();
+	}
 
 }
 
@@ -90,7 +101,7 @@ Tree::Tree()
 
 void Tree::print()
 {
-	//call the node version of this to do things.
+	root->print();
 }
 
 void Tree::fillTree(vector<int> use)
@@ -105,7 +116,6 @@ void Tree::fillTree(vector<int> use)
         Node* temp = root;
 
         while (true) {
-			cout << temp->getData() << endl;
             if (use[i] < temp->getData()) {
                 if (temp->getLeft() == nullptr) {
                     temp->setLeft(new Node(use[i]));
