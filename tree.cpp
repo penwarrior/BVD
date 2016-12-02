@@ -1,77 +1,82 @@
 #include "tree.h"
 #include <stack>
 
-
 // Node items
 
 Tree::Node*
 Tree::Node::getLeft()
 {
-	return left;
+    return left;
 }
 
 Tree::Node*
 Tree::Node::getRight()
 {
-	return right;
+    return right;
+}
+
+int Tree::Node::getData()
+{
+    return data;
 }
 
 void Tree::Node::setLeft(Node* give)
 {
-	left = give;
+    left = give;
 }
 
 void Tree::Node::setRight(Node* give)
 {
-	right = give;
+    right = give;
 }
 
 void Tree::Node::setData(int gimme)
 {
-	data = gimme;
+    data = gimme;
 }
 
 Tree::Node::Node()
 {
-	left = nullptr;
-	right = nullptr;
-	data = 0;
+    left = nullptr;
+    right = nullptr;
+    data = 0;
 }
 
 Tree::Node::~Node()
 {
 }
 
-
-void Tree::Node::print(int depth /* = 0 */)
+Tree::Node::Node(int takeit)
 {
-	for (int i = 0; i < depth; ++i)
-		cout << " ";
-
-	if (left) {
-		left->print(depth - 1);
-	}
-	if (right) {
-		right->print(depth + 1);
-	}
+    left = nullptr;
+    right = nullptr;
+    data = takeit;
 }
+
+void Tree::Node::print()
+{
+
+}
+
+
 
 
 // Tree items
 Tree::Node*
 Tree::getRoot()
 {
-	return root;
+    return root;
 }
 
 void Tree::setRoot(Node* give)
 {
-	root = give;
+    root = give;
 }
 
-Tree::Tree(vector use)
+Tree::Tree(vector<int> use)
 {
-	root = new Node;
+	root = nullptr;
+    fillTree(use);
 }
 
 Tree::~Tree()
@@ -80,75 +85,56 @@ Tree::~Tree()
 
 Tree::Tree()
 {
-	root = nullptr;
+    root = nullptr;
 }
 
 void Tree::print()
 {
-	if (root) {
-		root->print(20);
-	}
+	//call the node version of this to do things.
 }
 
-
-
-void Tree::fillTree(vector use)//this will take a vector
+void Tree::fillTree(vector<int> use)
 {
 
-for(int i = 0; i < use.size(); ++i)
-{
-	if(root == nullptr)
-	{
-		root = new Node(use[i]);
-		continue;
-	}
+    for (unsigned int i = 0; i < use.size(); ++i) {
+        if (root == nullptr) {
+            root = new Node(use[i]);
+            continue;
+        }
 
-	Node *temp = root;
+        Node* temp = root;
 
-	while(true)
-	{
-		if(use[i] < temp.getData())
-		{
-			if(temp.getLeft() == nullptr)
-			{
-				temp.setLeft(new Node(use[i]));
-				break;
-			}
-			else
-			{
-				temp = temp.getLeft();
-			}
-		}
-		else if(use[i] >= temp.getData())
-		{
-			if(temp.getRight() == nullptr)
-			{
-				temp.setRight(new Node(use[i]));
-				break;
-			}
-			else
-			{
-				temp = temp.getRight();
-			}
-		}
-
-	}
-}
-
-
-
-
-
+        while (true) {
+			cout << temp->getData() << endl;
+            if (use[i] < temp->getData()) {
+                if (temp->getLeft() == nullptr) {
+                    temp->setLeft(new Node(use[i]));
+                    break;
+                } else {
+                    temp = temp->getLeft();
+                }
+            } else if (use[i] >= temp->getData()) {
+                if (temp->getRight() == nullptr) {
+                    temp->setRight(new Node(use[i]));
+                    break;
+                } else {
+                    temp = temp->getRight();
+                }
+            }
+        }
+    }
 }
 
 int Tree::depth(int find)
 {
-	 //always go left unless you must go right
-
+    //always go left unless you must go right
+    return 0;
 }
 
 int Tree::breadth(int find)
 {
-// level counter, math to figure out how many nodes you have visited per level, and how many there should be
-//fuck.
+    // level counter, math to figure out how many nodes you have visited per level, and how many there should be
+    //this will only work if the tree is balanced.
+    //fuck.
+    return 0;
 }
