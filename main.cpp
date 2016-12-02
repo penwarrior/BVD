@@ -16,8 +16,17 @@ int main()
     cout << "but will it run?" << endl;
     vector<int> gimme = { 4, 5, 1, 7, 12 };
     Tree Maple(gimme);
+	int chop;
 
-    Maple.print();
+	cout << "What number would you like to search?: ";
+	cin >> chop;
+
+	if (Maple.depth(chop)) {
+		cout << "Found it\n";
+	}
+	else{
+		cout << "nada\n";
+	}
     cin.get();
 
     //system("pause");

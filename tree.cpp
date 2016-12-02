@@ -69,6 +69,35 @@ void Tree::Node::print()
 
 }
 
+bool Tree::Node::depth(int find)
+{
+	if(data == find)
+	{
+		return true;
+	}
+
+	else
+	{
+		if(getLeft() != nullptr)
+		{
+			if (getLeft()->depth(find))
+			{
+				return true;
+			}
+		}
+
+		if(getRight() != nullptr)
+		{
+			if(getRight()->depth(find))
+			{
+				return true;
+			}
+		}
+	}
+
+    return false;
+}
+
 
 
 
@@ -135,16 +164,16 @@ void Tree::fillTree(vector<int> use)
     }
 }
 
-int Tree::depth(int find)
+bool Tree::depth(int find)
 {
-    //always go left unless you must go right
-    return 0;
+	return root->depth(find);
+
 }
 
-int Tree::breadth(int find)
+bool Tree::breadth(int find)
 {
     // level counter, math to figure out how many nodes you have visited per level, and how many there should be
     //this will only work if the tree is balanced.
     //fuck.
-    return 0;
+    return false;
 }

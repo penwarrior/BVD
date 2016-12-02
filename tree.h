@@ -28,6 +28,8 @@ private:
 		void setLeft(Node* give);
 		void setRight(Node* give);
 		void print();
+		bool depth(int find);
+		bool breadth(int find);
 	};
 
 Node *root;
@@ -41,8 +43,8 @@ public:
 	Node* getRoot();
 	void setRoot(Node* give);
 	void print();
-	int depth(int find);
-	int breadth(int find);
+	bool depth(int find);
+	bool breadth(int find);
 
 
 
